@@ -5,16 +5,16 @@ const NavLinks = () => {
   return (
     <ul className={classes['nav-links']}>
       <li>
-        <NavLink to='/'>All Users</NavLink>
+        <NavLink className={({ isActive }) => isActive ? classes.active : ''} to='/'>All Users</NavLink>
       </li>
       <li>
-        <NavLink to='/u1/places'>My Places</NavLink>
+        <NavLink className={({ isActive }) => isActive ? classes.active : ''} to='/u1/places'>My Places</NavLink>
       </li>
       <li>
-        <NavLink to='/places/new'>Add Place</NavLink>
+        <NavLink className={({ isActive }) => isActive ? classes.active : ''} to='/places/new'>Add Place</NavLink>
       </li>
       <li>
-        <NavLink to='/auth'>Authenticate</NavLink>
+        <NavLink className={({ isActive }) => isActive ? classes.active : ''} to='/auth'>Authenticate</NavLink>
       </li>
     </ul>
   )

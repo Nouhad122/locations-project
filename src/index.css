@@ -12,9 +12,13 @@ html{
 body{
     font-size: 1.6rem;
 }
+a{
+    text-decoration: none;
+}
 
 main {
-    margin-top: 5rem;
+    margin-top: 2rem;
+    padding: 2rem 0;
   }
 
 #root{

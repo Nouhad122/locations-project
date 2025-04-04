@@ -1,13 +1,13 @@
 import React from 'react'
 import UserList from '../../Components/users/UserList'
-import newYorkImage from '../../assets/images/new-york.jpg'
+import avatarImage from '../../assets/images/avatar.jpg'
 
 const Users = () => {
   const USERS = [
     {
       id: 'u1', 
       name: 'Nouhad Elhallab', 
-      image: newYorkImage,
+      image: avatarImage,
       placeCount: 3
     }
   ]
