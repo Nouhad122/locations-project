@@ -1,0 +1,46 @@
+.modal {
+  z-index: 100;
+  position: fixed;
+  top: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modal__header {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  background: #ff0055;
+  color: white;
+}
+
+.modal__header h2 {
+  margin: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.modal__content {
+  padding: 1rem 0.5rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.modal__footer {
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ccc;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 40rem;
+    left: calc(50% - 20rem);
+    transform: none;
+  }
+}
