@@ -3,6 +3,8 @@ import classes from './PlaceItem.module.css'
 import Card from '../shared/UI/Card'
 import { Link } from 'react-router-dom'
 import Modal from '../shared/UI/Modal'
+import Map from '../shared/UI/Map'
+
 const PlaceItem = (props) => {
   const [showMap, setShowMap] = useState(false);
 
@@ -24,7 +26,7 @@ const PlaceItem = (props) => {
        footer={<button className={classes['place-item__actions-button']} onClick={closeMapHandler}>Close</button>}
       >
         <div className={classes['map-container']}>
-          <h2>The Map!</h2>
+          <Map center={props.coordinates} zoom={16} />
         </div>
       </Modal>
 
