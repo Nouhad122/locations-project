@@ -2,7 +2,7 @@
   width: calc(45% - 2rem);
   min-width: 17.5rem;
   list-style: none;
-  margin: 3rem 0;
+  margin-bottom: 2rem;
 }
 
 .user-item a {

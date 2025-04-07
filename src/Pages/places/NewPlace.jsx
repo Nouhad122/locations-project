@@ -1,10 +1,17 @@
 import React from 'react'
+import Input from '../../Components/shared/FormElements/Input'
+import classes from './NewPlace.module.css'
 
 const NewPlace = () => {
   return (
-    <div>
-      <h1>New Place</h1>
-    </div>
+    <form className={classes['place-form']}>
+      <Input
+       type="text" 
+       label="title" 
+       validators={[]} 
+       errorText="Please enter a valid title."
+      />
+    </form>
   )
 }
 
