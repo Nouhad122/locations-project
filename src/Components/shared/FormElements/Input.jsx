@@ -1,5 +1,6 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import classes from './Input.module.css'
+import { validate } from '../../../util/validators'
 
 const inputReducer = (state, action) =>{
   switch(action.type){
@@ -7,8 +8,15 @@ const inputReducer = (state, action) =>{
       return {
         ...state,
         value: action.val,
-        isValid: true
+        isValid: validate(action.val, action.validators)
       }
+
+    case 'TOUCH':
+      return{
+        ...state,
+        isTouched: true
+      }
+
     default:
       return state;
   }
@@ -16,29 +24,48 @@ const inputReducer = (state, action) =>{
 
 const Input = (props) => {
 
-  const [inputState, dispatch] = useReducer(inputReducer, {value: '', isValid: false}); 
+  const [inputState, dispatch] = useReducer(inputReducer, {value: '', isValid: false, isTouched: false});
+
+  const { id, onInput } = props;
+  const { value, isValid } = inputState;
+  
+  useEffect(() =>{
+    onInput(id, value, isValid);
+  },[id, onInput, value, isValid]);
 
   const changeHandler = (event) =>{
-    dispatch({ type: 'CHANGE', value: event.target.value });
+    dispatch({ 
+      type: 'CHANGE',
+      val: event.target.value, 
+      validators: props.validators 
+    });
+  }
+
+  const touchHandler = () =>{
+    dispatch({
+      type: 'TOUCH',
+    })
   }
 
   const element = props.isTextArea ? 
     <textarea
      id={props.id} 
      rows={props.rows || 3} 
-     onChange={changeHandler} 
+     onChange={changeHandler}
+     onBlur={touchHandler} 
     /> :
     <input
      id={props.id} 
      type={props.type} 
      placeholder={props.placeholder} 
      onChange={changeHandler}
+     onBlur={touchHandler} 
     />
   return (
-    <div className={`${classes['form-control']} ${!inputState.isValid && 'form-control__invalid'}`}>
+    <div className={`${classes['form-control']} ${!inputState.isValid && inputState.isTouched && classes['form-control__invalid']}`}>
       <label htmlFor={props.id}>{props.label}</label>
       { element }
-      { !inputState.isValid &&
+      { !inputState.isValid && inputState.isTouched &&
        <p className={classes['form-control__error-text']}>
         {props.errorText}
        </p>

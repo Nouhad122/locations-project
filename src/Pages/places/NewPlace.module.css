@@ -22,7 +22,7 @@
   margin-top: 1.5rem;
 }
 
-.place-form__actions button {
+ .place-form__button {
   background: #ff0055;
   color: white;
   border: 1px solid #ff0055;
@@ -34,18 +34,27 @@
   transition: all 0.2s;
 }
 
-.place-form__actions button:hover,
-.place-form__actions button:active {
+ .place-form__button:hover,
+ .place-form__button:active {
   background: #ff4382;
   border-color: #ff4382;
 }
 
-.place-form__actions button.cancel {
+ .place-form__button.cancel {
   background: transparent;
   color: #ff0055;
 }
 
-.place-form__actions button.cancel:hover,
-.place-form__actions button.cancel:active {
+ .place-form__button.cancel:hover,
+ .place-form__button.cancel:active {
   background: rgba(255, 0, 85, 0.1);
 }
+
+.place-form__button:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+
