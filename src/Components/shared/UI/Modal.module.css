@@ -14,7 +14,7 @@
 .modal__header {
   width: 100%;
   padding: 1rem 0.5rem;
-  background: #ff0055;
+  background: #2c3e50;
   color: white;
 }
 
@@ -25,9 +25,12 @@
 }
 
 .modal__content {
-  padding: 1rem 0.5rem;
+  padding: 1.2rem 0.5rem;
   max-height: 60vh;
   overflow-y: auto;
+  font-size: 1.3rem;
+  color: #2c3e50;
+  line-height: 1.5;
 }
 
 .modal__footer {

@@ -6,8 +6,9 @@ const PlacesList = (props) => {
     if(props.items.length === 0){
         return (
             <div className={`${classes['place-list']} center`}>
-                <Card>
+                <Card className={classes['place-list__content']}>
                     <h2>No places found.</h2>
+                    <button className={classes['btn-primary']}>Share Place</button>
                 </Card>
             </div>
         )

@@ -7,6 +7,7 @@ import Map from '../shared/UI/Map'
 
 const PlaceItem = (props) => {
   const [showMap, setShowMap] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const openMapHandler = () =>{
     setShowMap(true);
@@ -14,6 +15,19 @@ const PlaceItem = (props) => {
 
   const closeMapHandler = () =>{
     setShowMap(false);
+  }
+
+  const showDeleteWarningHandler = () =>{
+    setShowConfirmModal(true);
+  }
+
+  const cancelDeleteHandler = () =>{
+    setShowConfirmModal(false);
+  }
+
+  const confirmDeleteHandler = () =>{
+    setShowConfirmModal(false);
+    console.log('Deleting...');
   }
   return (
     <>
@@ -28,6 +42,19 @@ const PlaceItem = (props) => {
         <div className={classes['map-container']}>
           <Map center={props.coordinates} zoom={16} />
         </div>
+      </Modal>
+      <Modal 
+       show={showConfirmModal} 
+       onCancel={cancelDeleteHandler} 
+       header="Are you sure you want to delete this place?" 
+       footer={
+       <>
+        <button className={classes['place-item__actions-button']} onClick={confirmDeleteHandler}>DELETE</button>
+        <button className={classes['place-item__actions-button']} onClick={cancelDeleteHandler}>CANCEL</button>
+       </>
+       }
+      >
+        <p>Do you want to proceed and delete this place? Please note that it can't be undone thereafter.</p>
       </Modal>
 
       <li className={classes['place-item']}>
@@ -48,7 +75,7 @@ const PlaceItem = (props) => {
           <Link className={classes['place-item__actions-button']} to={`/places/${props.id}`}>
             EDIT
           </Link>
-          <button className={classes['place-item__actions-button']}>
+          <button className={classes['place-item__actions-button']} onClick={showDeleteWarningHandler}>
             DELETE
           </button>
         </div>

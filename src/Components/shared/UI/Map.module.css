@@ -11,14 +11,16 @@
 
 /* For OpenLayers controls */
 :global(.ol-control) {
-  background-color: rgba(255, 0, 85, 0.6) !important;
+  background-color: #2c3e50 !important;
+  color: #fff !important;
   border-radius: 4px;
 }
 
 :global(.ol-control button) {
-  background-color: rgba(255, 0, 85, 0.8) !important;
+  background-color: #2c3e50 !important;
+  color: #fff !important;
 }
 
 :global(.ol-control button:hover) {
-  background-color: rgba(255, 0, 85, 1) !important;
+  background-color: #2c3e50 !important;
 }
