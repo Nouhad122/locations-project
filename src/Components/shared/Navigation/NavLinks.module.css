@@ -30,6 +30,23 @@
   color: white;
 }
 
+.nav-links__button {
+  background: #c90e0e;
+  border: 1px solid transparent;
+  color: white;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-top: .2rem;
+}
+
+.nav-links__button:hover,
+.nav-links__button:active {
+  background: #ea0808;
+}
+
+
 @media (min-width: 768px) {
   .nav-links {
     flex-direction: row;
@@ -43,16 +60,5 @@
     color: white;
     text-decoration: none;
   }
-
-  .nav-links button {
-    border: 1px solid white;
-    color: white;
-    background: transparent;
-  }
   
-  .nav-links button:hover,
-  .nav-links button:active {
-    background: #f8df00;
-    color: #292929;
-  }
 }

@@ -6,14 +6,15 @@ import RootPage from './Pages/shared/RootPage';
 import UserPlaces from './Pages/places/UserPlaces';
 import UpdatePlace from './Pages/places/UpdatePlace';
 import Auth from './Pages/users/Auth';
+import ProtectedRoute from './Components/shared/Navigation/ProtectedRoute';
 
 const router = createBrowserRouter([
   { path: '/', element: <RootPage />, children: [
     { index: true, element: <Users /> },
-    { path: '/places/new', element: <NewPlace /> },
-    { path: '/places/:placeId', element: <UpdatePlace /> },
+    { path: '/places/new', element: <ProtectedRoute><NewPlace /></ProtectedRoute> },
+    { path: '/places/:placeId', element: <ProtectedRoute><UpdatePlace /></ProtectedRoute> },
     { path: '/:userId/places', element: <UserPlaces /> },
-    { path: '/auth', element: <Auth /> },
+    { path: '/auth', element: <ProtectedRoute isAuthPage={true}><Auth /></ProtectedRoute> },
   ]}
 ]);
 

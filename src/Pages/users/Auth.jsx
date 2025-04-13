@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Input from '../../Components/shared/FormElements/Input'
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../util/validators'
-import  useForm  from '../../hooks/useForm'
+import useForm from '../../hooks/useForm'
 import Card from '../../Components/shared/UI/Card'
 import classes from './Auth.module.css'
+import AuthContext from '../../Contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
+
 const Auth = () => {
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [formState, inputHandler, setFormData] = useForm({
     email: {
@@ -37,6 +42,8 @@ const Auth = () => {
 
   const authSubmitHandler = (event) => {
     event.preventDefault();
+    login();
+    navigate('/');
     console.log(formState.inputs);
   }
 
@@ -72,8 +79,21 @@ const Auth = () => {
          errorText="Please enter a valid password, at least 6 characters."
          onInput={inputHandler}
         />
-        <button type="submit" className={classes['auth-button']} disabled={!formState.isValid}>{isLoginMode ? 'Login' : 'Signup'}</button>
-        <button type="button" className={classes['switch-mode-button']} onClick={switchModeHandler}>Switch to {isLoginMode ? 'Signup' : 'Login'}</button>
+        
+        <button
+         type="submit" 
+         className={classes['auth-button']} 
+         disabled={!formState.isValid}
+        >
+            {isLoginMode ? 'Login' : 'Signup'}
+        </button>
+
+        <button
+         type="button" 
+         className={classes['switch-mode-button']} 
+         onClick={switchModeHandler}>
+            Switch to {isLoginMode ? 'Signup' : 'Login'}
+        </button>
       </form>
     </Card>
   )

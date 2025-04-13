@@ -4,11 +4,13 @@ import Card from '../shared/UI/Card'
 import { Link } from 'react-router-dom'
 import Modal from '../shared/UI/Modal'
 import Map from '../shared/UI/Map'
+import { useContext } from 'react'
+import AuthContext from '../../Contexts/AuthContext'
 
 const PlaceItem = (props) => {
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
+  const { isLoggedIn } = useContext(AuthContext);
   const openMapHandler = () =>{
     setShowMap(true);
   }
@@ -72,12 +74,18 @@ const PlaceItem = (props) => {
           <button className={classes['place-item__actions-button']} onClick={openMapHandler}>
             VIEW ON MAP
           </button>
-          <Link className={classes['place-item__actions-button']} to={`/places/${props.id}`}>
-            EDIT
-          </Link>
-          <button className={classes['place-item__actions-button']} onClick={showDeleteWarningHandler}>
-            DELETE
-          </button>
+
+          {isLoggedIn && (
+            <Link className={classes['place-item__actions-button']} to={`/places/${props.id}`}>
+              EDIT
+            </Link>
+          )}
+          
+          {isLoggedIn && (
+            <button className={classes['place-item__actions-button']} onClick={showDeleteWarningHandler}>
+              DELETE
+            </button>
+          )}
         </div>
         </Card>
       </li>

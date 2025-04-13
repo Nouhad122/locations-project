@@ -57,6 +57,11 @@
   cursor: not-allowed;
 }
 
+.authentication button:disabled:hover {
+  background-color: #bdc3c7;
+  color: #fff;
+}
+
 /* Input styles */
 .authentication input {
   width: 100%;
