@@ -5,12 +5,15 @@ import NewPlace from './Pages/places/NewPlace';
 import RootPage from './Pages/shared/RootPage';
 import UserPlaces from './Pages/places/UserPlaces';
 import UpdatePlace from './Pages/places/UpdatePlace';
+import Auth from './Pages/users/Auth';
+
 const router = createBrowserRouter([
   { path: '/', element: <RootPage />, children: [
     { index: true, element: <Users /> },
     { path: '/places/new', element: <NewPlace /> },
     { path: '/places/:placeId', element: <UpdatePlace /> },
     { path: '/:userId/places', element: <UserPlaces /> },
+    { path: '/auth', element: <Auth /> },
   ]}
 ]);
 
